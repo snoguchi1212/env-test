@@ -13,7 +13,7 @@ jobs:
       - run: |
           if [ ${{  secrets.TEST }} == 'secret-staging' ]; then
             echo "Staging"
-          else if [ ${{  secrets.TEST }} == 'secert-staging' ]; then
+          elif [ ${{  secrets.TEST }} == 'secret-production' ]; then
             echo "Production"
           else
             echo "Secrets are not working"

@@ -10,3 +10,11 @@ jobs:
     environment: ${{ github.ref_name == 'develop' && 'staging' || github.ref_name == 'main' && 'production'}}
     steps:
       - run: echo "${{ vars.TEST }}"
+      - run: |
+          if [ ${{  secrets.TEST }} == 'secret-staging' ]; then
+            echo "Staging"
+          else if [ ${{  secrets.TEST }} == 'secert-staging' ]; then
+            echo "Production"
+          else
+            echo "Secrets are not working"
+          fi

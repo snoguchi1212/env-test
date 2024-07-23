@@ -1,0 +1,12 @@
+name: test
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'develop' && 'staging' || github.ref_name == 'main' && 'production'}}
+    steps:
+      - run: echo "${{ vars.TEST }}"
